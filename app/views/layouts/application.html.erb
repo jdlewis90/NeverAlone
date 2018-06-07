@@ -19,6 +19,9 @@
 	p {
 		margin-bottom: 6px;
 	}
+	a {
+		text-decoration: none;
+	}
 	.container {
 		width: 70%;
 		margin: 0 auto;
@@ -30,6 +33,9 @@
 		font-weight: bold;
 		font-size: 1.4em;
 		text-shadow: 1px 1px 0px #083544;
+	}
+	#header a {
+		color: #60c9ec;
 	}
 	#start {
 		position: relative;
@@ -115,6 +121,11 @@
 		position: absolute;
 		margin-top: 10px;
 	}
+	.error {
+		color: red;
+		font-size: 0.8em;
+		padding-bottom: 3px;
+	}
 	.hidden {
 		opacity: 0;
 		transition: 0.3s ease;
@@ -124,7 +135,7 @@
   <body>
   <div id="header">
 	<div class="container">
-		<h1>Never Alone</h1>
+		<a href="/"><h1>Never Alone</h1></a>
 		<h4>Social Network for the anxious</h4>
 	</div>
   </div>

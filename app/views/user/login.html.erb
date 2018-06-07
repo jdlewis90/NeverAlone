@@ -1,11 +1,11 @@
 <div id="login" class="hidden">
 	<%= form_for :user,  :method => 'POST' do %>
 	<%= label_tag :user, "Username" %>
-	<%= text_field_tag :user, @username %><br />
+	<%= text_field_tag :user %><br />
 	<%= label_tag :pass, "Password" %>
-	<%= password_field_tag :pass, @password %><br />
+	<%= password_field_tag :pass %><br />
 	<span>Forgotten your password?</span>
-	<%= submit_tag "Sign up" %>
+	<%= submit_tag "Log in" %>
 	<% end %>
 </div>
 

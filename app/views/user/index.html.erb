@@ -1,3 +1,5 @@
+<% if flash[:notice] %><div id="notice"><%= flash[:notice] %></div><% end %>
+
 <div id="start">
 	<div class="btn" id="login_btn">Log in</div>
 	<div class="btn" id="signup_btn">Sign up</div>
@@ -6,7 +8,7 @@
 
 <div id="signup" class="hidden">
 	<p>Welcome, let's create your new account</p>
-	<%= form_for :user,  :method => 'POST' do %>
+	<%= form_tag("/signup", method: "post") do %>
 	<%= label_tag :username, "Username" %>
 	<%= text_field_tag :username, @username %><br />
 	<%= label_tag :password, "Password" %>
@@ -23,7 +25,7 @@
 		document.getElementById("start").classList.add("hidden");
 		setTimeout(function() {
 		window.location.href = "/login";
-		}, 300);
+		}, 1);
 		
 	}
 	document.getElementById("signup_btn").onclick=function() {

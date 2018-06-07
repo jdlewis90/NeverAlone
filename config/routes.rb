@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'user#index'
 
-  get 'user/signup'
+  get 'signup' => 'user#signup'
+  post 'signup' => 'user#signup'
 
   get 'login' => 'user#login'
 

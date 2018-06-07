@@ -1,2 +1,16 @@
-<h1>User#signup</h1>
-<p>Find me in app/views/user/signup.html.erb</p>
+<div id="signup">
+	<p>Welcome, let's create your new account</p>
+	<%= form_tag("/signup", method: "post") do %>
+	<%= label_tag :username, "Username" %>
+	<%= text_field_tag :username, params[:username] %><br />
+	<% if flash[:username] %><div class="error"><%= flash[:username] %></div><% end %>
+	
+	<%= label_tag :password, "Password" %>
+	<%= password_field_tag :password %><br />
+	<% if flash[:password] %><div class="error"><%= flash[:password] %></div><% end %>
+	<%= label_tag :email, "E-mail" %>
+	<%= text_field_tag :email, params[:email] %><br />
+	<% if flash[:email] %><div class="error"><%= flash[:email] %></div><% end %>
+	<%= submit_tag "Sign up" %>
+	<% end %>
+</div>
