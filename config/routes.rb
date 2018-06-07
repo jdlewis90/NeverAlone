@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'user/signup'
 
-  get 'user/login'
+  get 'login' 'user#login'
 
   get 'user/profile'
 

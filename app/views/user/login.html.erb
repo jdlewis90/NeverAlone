@@ -1,2 +1,16 @@
-<h1>User#login</h1>
-<p>Find me in app/views/user/login.html.erb</p>
+<div id="login" class="hidden">
+	<%= form_for :user,  :method => 'POST' do %>
+	<%= label_tag :user, "Username" %>
+	<%= text_field_tag :user, @username %><br />
+	<%= label_tag :pass, "Password" %>
+	<%= password_field_tag :pass, @password %><br />
+	<span>Forgotten your password?</span>
+	<%= submit_tag "Sign up" %>
+	<% end %>
+</div>
+
+<script>
+setTimeout(function() {
+	document.getElementById("login").classList.remove("hidden");
+	}, 100);
+</script>

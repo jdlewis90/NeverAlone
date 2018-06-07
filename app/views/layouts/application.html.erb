@@ -7,8 +7,129 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <style>
+	* {
+		box-sizing: border-box;
+		margin: 0px;
+		font-family: calibri;
+	}
+	body {
+		background-color: #b3c6ff;
+	}
+	p {
+		margin-bottom: 6px;
+	}
+	.container {
+		width: 70%;
+		margin: 0 auto;
+	}
+	#header {
+		padding: 20px;
+		background-color: white;
+		color: #60c9ec;
+		font-weight: bold;
+		font-size: 1.4em;
+		text-shadow: 1px 1px 0px #083544;
+	}
+	#start {
+		position: relative;
+		width: 200px;
+		margin: 0 auto;
+		top: 150px;
+		z-index: 1;
+	}
+	.btn {
+		margin-top: 10px;
+		width: 200px;
+		height: 40px;
+		font-size: 1.1em;
+		font-variant: small-caps;
+		font-weight: bold;
+		text-align: center;
+		padding: 8px;
+		cursor: pointer;
+	}
+	#login_btn {
+		top: 40px;
+		background: none;
+		border: 1px solid white;
+		color: white;
+	}
+	#signup_btn {
+		top: 90px;
+		background-color: white;
+		color: #333;
+	}
+	#signup, #login {
+		position: absolute;
+		top: 200px;
+		margin-left: auto;
+		margin-right: auto;
+		left: 0;
+		right: 0;
+		color: white;
+		width: 360px;
+		background-color: #024264;
+		padding: 20px;
+		border-radius: 10px;
+		margin: 0 auto;
+		font-size: 1.1em;
+		box-shadow: 2px 2px 2px #222;
+		transition: 0.3s ease 0.3s;
+	}
+	#signup b {
+		padding-bottom: 14px;
+	}
+	label {
+		display: inline-block;
+		width: 100px;
+	}
+	input[type=text], input[type=password] {
+		background-color: #e6eeff;
+		border-radius: 1px;
+		padding: 4px;
+		width: 210px;
+		margin-bottom: 8px;
+		border: 1px solid white;
+		font-weight: bold;
+	}
+	input[type=submit] {
+		margin: 10px 0px 0px 250px;
+		font-size: 0.8em;
+		right: 40px;
+		bottom: 20px;
+		border: 1px solid white;
+		padding: 4px 8px;
+		color: white;
+		cursor: pointer;	
+	}
+	#signup input[type=submit] {
+		background: linear-gradient(#49d049, green);
+	}
+	#login input[type=submit] {
+		background: linear-gradient(#8080ff, #3333ff);
+	}
+	#login span {
+		font-size: 0.7em;
+		font-weight: bold;
+		position: absolute;
+		margin-top: 10px;
+	}
+	.hidden {
+		opacity: 0;
+		transition: 0.3s ease;
+	}
+  </style>
 
   <body>
-    <%= yield %>
+  <div id="header">
+	<div class="container">
+		<h1>Never Alone</h1>
+		<h4>Social Network for the anxious</h4>
+	</div>
+  </div>
+  	<div class="container">
+	<%= yield %>
+	</div>
   </body>
 </html>
