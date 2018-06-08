@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   get 'signup' => 'user#signup'
   post 'signup' => 'user#signup'
 
-  get 'login' => 'user#login'
+  get 'login' => 'user#login', :as => 'login'
+  post 'login' => 'user#login'
 
-  get 'user/profile'
+  get 'profile/:username' => 'user#profile', :as => 'profile'
 
   get 'user/settings'
+
+  get 'logout' => 'user#logout', :as => 'logout'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

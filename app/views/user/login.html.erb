@@ -4,6 +4,7 @@
 	<%= text_field_tag :user %><br />
 	<%= label_tag :pass, "Password" %>
 	<%= password_field_tag :pass %><br />
+	<% if flash[:error] %><div class="error"><%= flash[:error] %></div><% end %>
 	<span>Forgotten your password?</span>
 	<%= submit_tag "Log in" %>
 	<% end %>

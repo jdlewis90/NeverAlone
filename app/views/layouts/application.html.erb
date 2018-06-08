@@ -22,6 +22,9 @@
 	a {
 		text-decoration: none;
 	}
+	#content {
+		margin-top: 20px;
+	}
 	.container {
 		width: 70%;
 		margin: 0 auto;
@@ -121,26 +124,113 @@
 		position: absolute;
 		margin-top: 10px;
 	}
+	.notice {
+		position: relative;
+		top: 20px;
+		margin-left: auto;
+		margin-right: auto;
+		left: 0;
+		right: 0;
+		border: 2px solid white;
+		color: white;
+		font-size: 1.2em;
+		padding: 2px;
+		border-radius: 3px;
+		width: 40%;
+	}
 	.error {
 		color: red;
 		font-size: 0.8em;
-		padding-bottom: 3px;
+		margin-bottom: 5px;
+		padding: 2px;
+		background-color: #ffcccc;
+		border-radius: 3px;
 	}
 	.hidden {
 		opacity: 0;
 		transition: 0.3s ease;
 	}
+	#current_user {
+		position: absolute;
+		top: 10px;
+		right: 30px;
+		height: 60px;
+		text-align: right;
+	}
+	#avatar {
+		float: left;
+		width: 40px;
+		height: 40px;
+		border: 2px solid black;
+		border-radius: 30px;
+	}
+	#username {
+		float: left;
+		padding: 8px;
+		font-weight: bold;
+		min-width: 100px;
+		color: #b3c6ff;
+		cursor: pointer;
+	}
+	#current_user:hover ul {
+		display: block;
+	}
+	#username ul {
+		position: absolute;
+		top: 36px;
+		right: 10px;
+		border: 1px solid #555;
+		color: #555;
+		list-style: none;
+		padding: 2px;
+		width: 140px;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+		box-shadow: 1px 1px 2px #222;
+		background-color: white;
+		display: none;
+	}
+	#username li {
+		padding: 4px;
+		text-align: center;
+		cursor: pointer;
+		border-top: 1px solid #ddd;
+	}
+	#username li a {
+		color: #555;
+	}
+	#username li:nth-child(1) {
+		border-top: none;
+	}
+	#username li:hover {
+		background-color: #ddd;
+	}
   </style>
 
   <body>
+  <% if session[:user] %>
+  <div id="current_user">
+	<div id="avatar"></div>
+	<div id="username"><%= link_to session[:user], profile_path(session[:user]) %>
+	<ul>
+		<li>New post</li>
+		<li>Edit profile</li>
+		<li>Settings</li>
+		<li><%= link_to "Log out", logout_path %></li>
+	</ul>
+	</div>
+  </div>
+  <% end %>
   <div id="header">
 	<div class="container">
 		<a href="/"><h1>Never Alone</h1></a>
 		<h4>Social Network for the anxious</h4>
 	</div>
   </div>
+  <div id="content">
   	<div class="container">
 	<%= yield %>
 	</div>
+  </div>
   </body>
 </html>
