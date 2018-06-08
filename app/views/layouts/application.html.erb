@@ -164,7 +164,7 @@
 		border: 2px solid black;
 		border-radius: 30px;
 	}
-	#username {
+	#username_display {
 		float: left;
 		padding: 8px;
 		font-weight: bold;
@@ -175,7 +175,7 @@
 	#current_user:hover ul {
 		display: block;
 	}
-	#username ul {
+	#username_display ul {
 		position: absolute;
 		top: 36px;
 		right: 10px;
@@ -190,19 +190,19 @@
 		background-color: white;
 		display: none;
 	}
-	#username li {
+	#username_display li {
 		padding: 4px;
 		text-align: center;
 		cursor: pointer;
 		border-top: 1px solid #ddd;
 	}
-	#username li a {
+	#username_display li a {
 		color: #555;
 	}
-	#username li:nth-child(1) {
+	#username_display li:nth-child(1) {
 		border-top: none;
 	}
-	#username li:hover {
+	#username_display li:hover {
 		background-color: #ddd;
 	}
   </style>
@@ -211,7 +211,7 @@
   <% if session[:user] %>
   <div id="current_user">
 	<div id="avatar"></div>
-	<div id="username"><%= link_to session[:user], profile_path(session[:user]) %>
+	<div id="username_display"><%= link_to session[:user], profile_path(session[:user]) %>
 	<ul>
 		<li>New post</li>
 		<li>Edit profile</li>
