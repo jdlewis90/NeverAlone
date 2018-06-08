@@ -83,4 +83,15 @@ class UserController < ApplicationController
     flash[:notice] = "You have successfully logged out"
     redirect_to root_path
   end
+
+  def start
+
+    @U = User.new
+    @U.username = "admin"
+    @U.password = "thefirstuser"
+    @U.email = "admin@neveralone.com"
+    @U.save
+    redirect_to root_path
+  end
+
 end

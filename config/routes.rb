@@ -13,5 +13,7 @@ Rails.application.routes.draw do
 
   get 'logout' => 'user#logout', :as => 'logout'
 
+  get 'admin/startdatabase' => 'user#start'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
