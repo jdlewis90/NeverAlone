@@ -1,2 +1,46 @@
-<h1>User#settings</h1>
-<p>Find me in app/views/user/settings.html.erb</p>
+<h1>Settings</h1>
+
+
+<%= form_tag("/edit", method: "post") do %>
+
+<div id="profile_pic"></div>
+
+<p>
+Who can see your profile?
+<select name="privacy">
+<option value="me" <% if @User.privacy=="me" %>SELECTED<% end %>>Only me</option>
+<option value="friends" <% if @User.privacy=="friends" %>SELECTED<% end %>>Friends only</option>
+<option value="users" <% if @User.privacy=="users" %>SELECTED<% end %>>Users only</option>
+<option value="everyone" <% if @User.privacy=="everyone" %>SELECTED<% end %>>Everyone</option>
+</select>
+</p>
+
+<p>
+Who can see your posts?
+<select name="posts">
+<option value="me" <% if @User.posts=="me" %>SELECTED<% end %>>Only me</option>
+<option value="friends" <% if @User.posts=="friends" %>SELECTED<% end %>>Friends only</option>
+<option value="users" <% if @User.posts=="users" %>SELECTED<% end %>>Users only</option>
+<option value="everyone" <% if @User.posts=="everyone" %>SELECTED<% end %>>Everyone</option>
+</select>
+</p>
+
+<p>
+Allow others to find you using search?
+<select name="search">
+<option value="yes">Yes</option>
+<option value="no" <% if @User.search=="no" %>SELECTED<% end %>>No</option>
+</select>
+</p>
+
+<p>
+Who can comment on your posts?
+<select name="comments">
+<option value="none" <% if @User.comments=="none" %>SELECTED<% end %>>No one</option>
+<option value="friends" <% if @User.comments=="friends" %>SELECTED<% end %>>Friends only</option>
+<option value="users" <% if @User.comments=="users" %>SELECTED<% end %>>Users only</option>
+</select>
+</p>
+
+<%= submit_tag "Sign up" %>
+<% end %>

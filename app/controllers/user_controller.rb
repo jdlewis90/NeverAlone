@@ -37,6 +37,10 @@ class UserController < ApplicationController
       @user.username = params[:username]
       @user.password = params[:password]
       @user.email = params[:email]
+      @user.privacy = "users"
+      @user.posts = "users"
+      @user.search = "yes"
+      @user.comments = "friends"
       @user.save
 
       session[:user] = @User.username
@@ -107,6 +111,12 @@ class UserController < ApplicationController
   end
 
   def settings
+    @User = User.find_by_username(session[:user])
+
+    params[:privacy] = @User.privacy
+    params[:posts] = @User.posts
+    params[:search] = @User.search
+    params[:comments] = @User.comments
   end
 
   def logout

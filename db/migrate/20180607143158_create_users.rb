@@ -9,7 +9,9 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :location
       t.string :dob
       t.string :privacy
+      t.string :posts
       t.string :search
+      t.string :comments
 
       t.timestamps
     end

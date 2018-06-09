@@ -21,7 +21,9 @@ ActiveRecord::Schema.define(version: 20180607143158) do
     t.string   "location"
     t.string   "dob"
     t.string   "privacy"
+    t.string   "posts"
     t.string   "search"
+    t.string   "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

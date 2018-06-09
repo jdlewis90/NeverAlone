@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   get 'edit' => 'user#edit', :as => 'profile_edit'
   post 'edit' => 'user#edit'
 
-  get 'user/settings'
+  get 'settings' => 'user#settings', :as => 'settings'
+  post 'settings' => 'user#settings'
 
   get 'logout' => 'user#logout', :as => 'logout'
 
