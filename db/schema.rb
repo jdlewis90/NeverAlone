@@ -16,6 +16,12 @@ ActiveRecord::Schema.define(version: 20180607143158) do
     t.string   "username"
     t.string   "password"
     t.string   "email"
+    t.string   "avatar"
+    t.string   "intro"
+    t.string   "location"
+    t.string   "dob"
+    t.string   "privacy"
+    t.string   "search"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -26,16 +26,25 @@
 		margin-top: 20px;
 	}
 	.container {
+		position: relative;
 		width: 70%;
 		margin: 0 auto;
 	}
 	#header {
-		padding: 20px;
+		padding: 10px;
+		height: 70px;
 		background-color: white;
+		box-shadow: 1px 1px 2px #222;
+	}
+	#header h1, #header h4 {
 		color: #60c9ec;
 		font-weight: bold;
-		font-size: 1.4em;
 		text-shadow: 1px 1px 0px #083544;
+	}
+	#header h4 {
+		position: absolute;
+		top: 14px;
+		left: 200px;
 	}
 	#header a {
 		color: #60c9ec;
@@ -71,7 +80,7 @@
 	}
 	#signup, #login {
 		position: absolute;
-		top: 200px;
+		top: 100px;
 		margin-left: auto;
 		margin-right: auto;
 		left: 0;
@@ -126,7 +135,7 @@
 	}
 	.notice {
 		position: relative;
-		top: 20px;
+		top: 10px;
 		margin-left: auto;
 		margin-right: auto;
 		left: 0;
@@ -134,9 +143,9 @@
 		border: 2px solid white;
 		color: white;
 		font-size: 1.2em;
-		padding: 2px;
+		padding: 6px;
 		border-radius: 3px;
-		width: 40%;
+		width: 60%;
 	}
 	.error {
 		color: red;
@@ -152,10 +161,11 @@
 	}
 	#current_user {
 		position: absolute;
-		top: 10px;
-		right: 30px;
+		top: 8px;
+		right: 10px;
 		height: 60px;
 		text-align: right;
+		z-index:1;
 	}
 	#avatar {
 		float: left;
@@ -163,12 +173,14 @@
 		height: 40px;
 		border: 2px solid black;
 		border-radius: 30px;
+		background-position: center center;
+		background-size: cover;
 	}
 	#username_display {
 		float: left;
 		padding: 8px;
 		font-weight: bold;
-		min-width: 100px;
+		min-width: 80px;
 		color: #b3c6ff;
 		cursor: pointer;
 	}
@@ -177,8 +189,8 @@
 	}
 	#username_display ul {
 		position: absolute;
-		top: 36px;
-		right: 10px;
+		top: 52px;
+		right: -10px;
 		border: 1px solid #555;
 		color: #555;
 		list-style: none;
@@ -205,32 +217,55 @@
 	#username_display li:hover {
 		background-color: #ddd;
 	}
+	#login_topbtn {
+		position: absolute;
+		top: 10px;
+		right: 30px;
+		width: 90px;
+		height: 30px;
+		background-color: #b3c6ff;
+		border-radius: 2px;
+		padding: 3px;
+		color: white;
+		font-variant: small-caps;
+		text-align: center;
+		font-weight: bold;
+		cursor: pointer;
+		display: none;
+	}
   </style>
 
   <body>
-  <% if session[:user] %>
-  <div id="current_user">
-	<div id="avatar"></div>
-	<div id="username_display"><%= link_to session[:user], profile_path(session[:user]) %>
-	<ul>
-		<li>New post</li>
-		<li>Edit profile</li>
-		<li>Settings</li>
-		<li><%= link_to "Log out", logout_path %></li>
-	</ul>
-	</div>
-  </div>
-  <% end %>
   <div id="header">
 	<div class="container">
-		<a href="/"><h1>Never Alone</h1></a>
-		<h4>Social Network for the anxious</h4>
+		<h1><%= link_to "Never Alone", root_path %></h1>
+	   <% if !session[:user] %>
+			<h4></h4>
+			<div id="login_topbtn" class="hidden">Log in</div>
+		<% elsif session[:user] %>
+			<div id="current_user">
+			<div id="avatar" style="background-image:url(<%= session[:avatar] %>)"></div>
+			<div id="username_display">
+				<%= link_to session[:user], profile_path(session[:user]) %>
+				<ul>
+				<li>New post</li>
+				<li><%= link_to "Edit profile", profile_edit_path %></li>
+				<li>Settings</li>
+				<li><%= link_to "Log out", logout_path %></li>
+				</ul>
+			</div>
+		</div>
+		<% end %>
+
+
 	</div>
   </div>
   <div id="content">
   	<div class="container">
+	  <% if flash[:notice] %><div class="notice"><%= flash[:notice] %></div><% end %>
 	<%= yield %>
 	</div>
   </div>
+  
   </body>
 </html>

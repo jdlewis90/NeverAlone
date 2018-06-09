@@ -1,2 +1,6 @@
 <h1><%= @username %></h1>
-<p><%= @intro %></p>
+<p><%= @User.intro %></p>
+
+<p>
+<% if @User.location!="" %>Location: <%= @User.location %><% end %>
+<% if @User.dob!="" %><p>Age: <%= @User.dob %><% end %></p>

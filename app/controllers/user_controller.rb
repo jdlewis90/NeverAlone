@@ -38,7 +38,8 @@ class UserController < ApplicationController
       @user.password = params[:password]
       @user.email = params[:email]
       @user.save
-      session[:user] = @user.username
+
+      session[:user] = @User.username
       flash[:notice] = "Welcome #{@user.username}, your account has been created!"
       redirect_to root_path
     end
@@ -59,7 +60,11 @@ class UserController < ApplicationController
       else
         session[:user] = @username
         flash[:notice] = "Welcome back, #{@username}"
-        redirect_to root_path
+        if session[:redirect]
+          redirect_to root_path
+        else
+          
+        end
       end
     end
   end
@@ -75,22 +80,38 @@ class UserController < ApplicationController
     end
   end
 
+  def edit
+    @header = "Edit Profile"
+    @User = User.find_by_username(session[:user])
+
+    if @User
+
+      if request.post?
+
+        if params[:profilePic].length<180
+        @User.avatar = params[:profilePic]
+        @User.intro = params[:intro]
+        @User.location = params[:location]
+        @User.dob = params[:dob]
+        @User.save
+        session[:avatar] = @User.avatar
+        flash[:notice] = "Profile has been updated!"
+        end
+      end
+
+    else
+      session[:redirect] = profile_edit_path
+      flash[:notice] = "You must be logged in to do this"
+      redirect_to login_path
+    end
+  end
+
   def settings
   end
 
   def logout
     session[:user] = nil
     flash[:notice] = "You have successfully logged out"
-    redirect_to root_path
-  end
-
-  def start
-
-    @U = User.new
-    @U.username = "admin"
-    @U.password = "thefirstuser"
-    @U.email = "admin@neveralone.com"
-    @U.save
     redirect_to root_path
   end
 

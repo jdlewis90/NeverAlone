@@ -9,11 +9,12 @@ Rails.application.routes.draw do
 
   get 'profile/:username' => 'user#profile', :as => 'profile'
 
+  get 'edit' => 'user#edit', :as => 'profile_edit'
+  post 'edit' => 'user#edit'
+
   get 'user/settings'
 
   get 'logout' => 'user#logout', :as => 'logout'
-
-  get 'admin/startdatabase' => 'user#start'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

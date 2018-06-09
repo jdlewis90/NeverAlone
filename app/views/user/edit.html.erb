@@ -1,0 +1,21 @@
+<h1><%= @header %></h1>
+<p><%= @text %></p>
+
+<%= form_tag("/edit", method: "post") do %>
+
+<div id="profile_pic"></div>
+
+<%= label_tag :profilePic, "Profile Picture" %>
+<%= text_field_tag :profilePic, @User.avatar %><br />
+
+<%= label_tag :intro, "Intro" %>
+<%= text_field_tag :intro, @User.intro %><br />
+
+<%= label_tag :location, "Location" %>
+<%= text_field_tag :location, @User.location %><br />
+
+<%= label_tag :dob, "Date of Birth" %>
+<%= date_field_tag :dob, @User.dob %><br />
+
+<%= submit_tag "Sign up" %>
+<% end %>
