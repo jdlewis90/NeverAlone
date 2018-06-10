@@ -43,7 +43,7 @@ class UserController < ApplicationController
       @user.comments = "friends"
       @user.save
 
-      session[:user] = params[:username]
+      session[:user] = @user.username
       flash[:notice] = "Welcome #{@user.username}, your account has been created!"
       redirect_to root_path
     end
@@ -112,6 +112,14 @@ class UserController < ApplicationController
 
   def settings
     @User = User.find_by_username(session[:user])
+
+    if request.post?
+      @User.privacy = params[:privacy]
+      @User.posts = params[:posts]
+      @User.search = params[:search]
+      @User.comments = params[:comments]    
+      @User.save
+    end
 
   end
 
