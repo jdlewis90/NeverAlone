@@ -117,8 +117,23 @@ class UserController < ApplicationController
       @User.privacy = params[:privacy]
       @User.posts = params[:posts]
       @User.search = params[:search]
-      @User.comments = params[:comments]    
-      @User.save
+      @User.comments = params[:comments]
+
+      if params[:username]
+        @validate_username = User.find_by_username(params[:username])
+        if @validate_username
+          flash[:username] = "Sorry, this username is already taken."
+          @error = true
+        else        
+          @User.username = params[:username]
+          session[:user] = params[:username]
+        end
+      end
+
+      if !@error
+        flash[:notice] = "Settings have been updated!"
+        @User.save
+      end
     end
 
   end

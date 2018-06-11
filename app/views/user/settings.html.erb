@@ -1,7 +1,7 @@
 <h1>Settings</h1>
 
 
-<%= form_tag("/edit", method: "post") do %>
+<%= form_tag("/settings", method: "post") do %>
 
 <div id="profile_pic"></div>
 
@@ -40,6 +40,13 @@ Who can comment on your posts?
 <option value="friends" <% if @User.comments=="friends" %>SELECTED<% end %>>Friends only</option>
 <option value="users" <% if @User.comments=="users" %>SELECTED<% end %>>Users only</option>
 </select>
+</p>
+
+<p>
+Change username
+<%= label_tag :username, "Username" %>
+<%= text_field_tag :username %><br />
+<% if flash[:username] %><div class="error"><%= flash[:username] %></div><% end %> 
 </p>
 
 <%= submit_tag "Sign up" %>

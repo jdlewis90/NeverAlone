@@ -1,6 +1,25 @@
-<h1><%= @username %></h1>
-<p><%= @User.intro %></p>
 
-<p>
-<% if @User.location!="" %>Location: <%= @User.location %><% end %>
-<% if @User.dob!="" %><p>Age: <%= @User.dob %><% end %></p>
+<div id="profile_header">
+	<div id="profile_picture" style="background-image: url(<%= @User.avatar %>)"></div>
+	<div id="profile_username">
+	<h1><%= @username %></h1>
+	<p><%= @User.intro %></p><br />
+	</div>
+</div><br />
+
+
+<div  class="left">
+<div id="profile_info">
+<% if @User.location!="" %>Location <span><%= @User.location %></span><% end %>
+<% if @User.dob!="" %><p>Age <span><%= @User.dob %></span><% end %>
+</div>
+</div>
+
+<div class="right">
+<div class="post">
+<h2>My first post</h2>
+<p>This is some text to make an example of a post which could be displayed on
+a profile. You can write anything here and choose who can see it from the 
+settings page. People can leave comments on your post.</p>
+</div>
+</div>
