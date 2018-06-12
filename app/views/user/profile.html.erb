@@ -16,10 +16,17 @@
 </div>
 
 <div class="right">
+<% if @Posts %>
+
+<% @Posts.each do | p | %>
+
 <div class="post">
-<h2>My first post</h2>
-<p>This is some text to make an example of a post which could be displayed on
-a profile. You can write anything here and choose who can see it from the 
-settings page. People can leave comments on your post.</p>
+<h2><%= p.title %></h2><br />
+<p><%= p.content %></p>
 </div>
+
+<% end %>
+<% end %>
+
+
 </div>

@@ -15,6 +15,15 @@ Rails.application.routes.draw do
   get 'settings' => 'user#settings', :as => 'settings'
   post 'settings' => 'user#settings'
 
+  get 'post' => 'post#new', :as => 'post_new'
+  post 'post' => 'post#new'
+
+  get 'post/list'
+
+  get 'post/edit'
+
+  get 'post/delete'
+
   get 'logout' => 'user#logout', :as => 'logout'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

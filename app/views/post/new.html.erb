@@ -1,0 +1,11 @@
+<h1>New Post</h1>
+
+<%= form_tag("/post", method: "post") do %>
+
+<%= text_area_tag :post %><br />
+
+<div class="submit">
+<%= submit_tag "Post thread" %>
+<%= submit_tag "Post to profile" %>
+</div>
+<% end %>

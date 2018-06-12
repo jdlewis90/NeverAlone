@@ -115,20 +115,31 @@
 		font-weight: bold;
 	}
 	input[type=submit] {
-		margin: 10px 0px 0px 250px;
 		font-size: 0.8em;
 		right: 40px;
 		bottom: 20px;
+		height: 30px;
 		border: 1px solid #555;
 		padding: 4px 8px;
 		color: white;
 		cursor: pointer;	
+	}
+	#signup input[type=submit], #login input[type=submit] {
+		margin: 10px 0px 0px 250px;	
 	}
 	#signup input[type=submit] {
 		background: linear-gradient(#49d049, green);
 	}
 	#login input[type=submit] {
 		background: linear-gradient(#8080ff, #3333ff);
+	}
+	.submit {
+		position: absolute;
+		padding-top: 10px;
+		left: 260px;
+	}
+	.submit input[type=submit] {
+		background: linear-gradient(#8080ff, blue);
 	}
 	#login span {
 		font-size: 0.7em;
@@ -164,12 +175,16 @@
 	}
 	#current_user {
 		position: absolute;
-		top: 8px;
+		display: block;
+		top: -10px;
+		padding: 16px;
 		right: 10px;
-		height: 60px;
+		height: 70px;
 		text-align: right;
 		z-index:1;
+		cursor: pointer;
 	}
+
 	#avatar {
 		float: left;
 		width: 40px;
@@ -185,14 +200,14 @@
 		font-weight: bold;
 		min-width: 80px;
 		color: #b3c6ff;
-		cursor: pointer;
+		height: 40px;
 	}
 	#current_user:hover ul {
 		display: block;
 	}
 	#username_display ul {
 		position: absolute;
-		top: 52px;
+		top: 70px;
 		right: -10px;
 		border: 1px solid #555;
 		color: #555;
@@ -276,10 +291,20 @@
 		}
 		.right {
 			float: left;
+			min-width: 64%;
 			position: absolute;
 			display: inline-block;
 			margin-left: 12px;
 			margin-right: 12px;
+		}
+
+		textarea {
+			width: 70%;
+			height: 200px;
+			padding: 8px;
+			background-color: #e6eeff;
+			border-radius: 1px;
+			border: 1px solid #555;
 		}
 		@media screen and (max-width: 900px) {
 			.container {
@@ -304,12 +329,14 @@
 			<h4></h4>
 			<div id="login_topbtn" class="hidden">Log in</div>
 		<% elsif session[:user] %>
+					<a id="profile_link" href="/profile/<%= session[:user] %>"></a>
 			<div id="current_user">
-			<div id="avatar" style="background-image:url(<%= session[:avatar] %>)"></div>
+			<a href="/profile/<%= session[:user] %>">
+			<div id="avatar" style="background-image:url(<%= session[:avatar] %>)"></div></a>
 			<div id="username_display">
 				<%= link_to session[:user], profile_path(session[:user]) %>
 				<ul>
-				<li>New post</li>
+				<li><%= link_to "New post", post_new_path %></li>
 				<li><%= link_to "Edit profile", profile_edit_path %></li>
 				<li><%= link_to "Settings", settings_path %></li>
 				<li><%= link_to "Log out", logout_path %></li>

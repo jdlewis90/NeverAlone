@@ -44,6 +44,7 @@ class UserController < ApplicationController
       @user.save
 
       session[:user] = @user.username
+      session[:id] = @user.id
       flash[:notice] = "Welcome #{@user.username}, your account has been created!"
       redirect_to root_path
     end
@@ -63,6 +64,8 @@ class UserController < ApplicationController
         flash[:error] = "Username or password is incorrect."
       else
         session[:user] = @username
+        session[:id] = @valid_user.id
+        session[:avatar] = @valid_user.avatar
         flash[:notice] = "Welcome back, #{@username}"
         if session[:redirect]
           redirect_to root_path
@@ -78,6 +81,8 @@ class UserController < ApplicationController
 
     if @User
       @username = @User.username
+      @Posts = Post.find_by_sql("SELECT * FROM Posts WHERE user_id='#{session[:id]}' and post_type='post' order by id DESC")
+      
     else
       @username = "Not found"
       @intro = "The user could not be found, or maybe their profile is private"
@@ -140,6 +145,8 @@ class UserController < ApplicationController
 
   def logout
     session[:user] = nil
+    session[:id] = nil
+    session[:avatar] = nil
     flash[:notice] = "You have successfully logged out"
     redirect_to root_path
   end
