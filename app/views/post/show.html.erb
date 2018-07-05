@@ -1,0 +1,7 @@
+<div class="post">
+<h1><%=@Post.title %></h1>
+<h3>Posted by <%= link_to @User.username, profile_path(@User.username) %>
+</div>
+<div class="post">
+<p><%= @Post.content %></p>
+</div>

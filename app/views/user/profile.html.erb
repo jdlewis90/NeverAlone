@@ -1,4 +1,4 @@
-
+<% if @display %>
 <div id="profile_header">
 	<div id="profile_picture" style="background-image: url(<%= @User.avatar %>)"></div>
 	<div id="profile_username">
@@ -21,12 +21,20 @@
 <% @Posts.each do | p | %>
 
 <div class="post">
-<h2><%= p.title %></h2><br />
+<h2><a href="/postview/<%= @username %>/<%= p.id %>""><%= p.title %></a></h2><br />
 <p><%= p.content %></p>
 </div>
 
 <% end %>
 <% end %>
 
-
 </div>
+
+<% else %>
+
+<div class="post">
+	<h2><%= @username %></h2>
+	<p><%= @intro %></p>
+</div>
+
+<% end %>

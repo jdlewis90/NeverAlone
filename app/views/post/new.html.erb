@@ -1,11 +1,21 @@
 <h1>New Post</h1>
 
 <%= form_tag("/post", method: "post") do %>
-
+Title <%= text_field_tag :title %><br />
 <%= text_area_tag :post %><br />
 
+<span class="radio">
+<%= radio_button_tag 'post_type', 'post', true %>
+<span></span>
+<label for="post_type_post">Post to profile</label>
+</span>
+<span class="radio">
+<%= radio_button_tag 'post_type', 'thread', false %>
+<span></span>
+<label for="post_type_thread">Create a thread</label>
+</span>
+
 <div class="submit">
-<%= submit_tag "Post thread" %>
-<%= submit_tag "Post to profile" %>
+<%= submit_tag "Submit Post" %>
 </div>
 <% end %>

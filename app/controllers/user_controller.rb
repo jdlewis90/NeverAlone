@@ -80,12 +80,27 @@ class UserController < ApplicationController
     @User = User.find_by_username(params[:username])
 
     if @User
-      @username = @User.username
-      @Posts = Post.find_by_sql("SELECT * FROM Posts WHERE user_id='#{session[:id]}' and post_type='post' order by id DESC")
+      @display = false
+      if @User.privacy=="everyone"
+        @display = true
+      elsif @User.privacy=="users" && session[:user]
+        @display = true
+      elsif @User.privacy=="me" && session[:user]==@User.username
+        @display = true
+      end
+  
+  
+      if @display
+        @username = @User.username
+        @Posts = Post.find_by_sql("SELECT * FROM Posts WHERE user_id='#{session[:id]}' and post_type='post' order by id DESC")
       
+      else
+        @username = "Not found"
+        @intro = "The user could not be found, or their profile is private"
+      end
     else
       @username = "Not found"
-      @intro = "The user could not be found, or maybe their profile is private"
+      @intro = "The user could not be found, or their profile is private"
     end
   end
 
@@ -124,6 +139,7 @@ class UserController < ApplicationController
       @User.search = params[:search]
       @User.comments = params[:comments]
 
+      if !params[:username].blank?
       if params[:username]
         @validate_username = User.find_by_username(params[:username])
         if @validate_username
@@ -134,6 +150,7 @@ class UserController < ApplicationController
           session[:user] = params[:username]
         end
       end
+    end
 
       if !@error
         flash[:notice] = "Settings have been updated!"

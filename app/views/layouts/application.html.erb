@@ -140,6 +140,7 @@
 	}
 	.submit input[type=submit] {
 		background: linear-gradient(#8080ff, blue);
+		border-radius: 4px;
 	}
 	#login span {
 		font-size: 0.7em;
@@ -305,6 +306,55 @@
 			background-color: #e6eeff;
 			border-radius: 1px;
 			border: 1px solid #555;
+		}
+		.radio {
+			position: relative;
+			display: inline-block;
+			height: 40px;
+			width: 160px;
+			border-radius: 20px;
+			background-color: #47cf22;
+			margin: 4px;
+		}
+		:hover input[type=radio]:hover {
+			background-color: yellow;
+		}
+		input[type=radio] {
+			position: absolute;
+			left: 8px;
+			top: 8px;
+			width: 20px;
+			height: 20px;
+			opacity: 0;
+		}
+		.radio span {
+			position: absolute;
+			left: 12px;
+			top: 10px;
+			width: 16px;
+			height: 16px;
+			border: 4px solid #eee;
+			background-color: #ccc;
+			border-radius: 8px;
+		}
+		.radio:hover span {
+			background-color: #777;		
+		}
+		.radio input[type=radio]:checked + span {
+			background-color: #333;
+			border: 4px solid white;
+		}
+		.radio label {
+			position: absolute;
+			left: 14px;
+			top: 8px;
+			font-weight: bold;
+			display: block;
+			width: 100%;
+			height: 100%;
+			padding-left: 20px;
+			cursor: pointer;
+			color: white;
 		}
 		@media screen and (max-width: 900px) {
 			.container {

@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   get 'post' => 'post#new', :as => 'post_new'
   post 'post' => 'post#new'
 
-  get 'post/list'
+  get 'postview/:username/:id' => 'post#show', :as => 'postview'
+
+  get 'threads' => 'post#list', :as => 'threads'
 
   get 'post/edit'
 
