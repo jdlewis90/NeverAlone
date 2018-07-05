@@ -15,7 +15,6 @@ class PostController < ApplicationController
 
   def show
     @Post = Post.find_by_id(params[:id])
-    @User = User.find_by_id(@Post.user_id)
     
   end
 

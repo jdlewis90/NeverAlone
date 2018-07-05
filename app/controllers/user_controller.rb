@@ -78,9 +78,9 @@ class UserController < ApplicationController
 
   def profile
     @User = User.find_by_username(params[:username])
-
+    @display = false
+    
     if @User
-      @display = false
       if @User.privacy=="everyone"
         @display = true
       elsif @User.privacy=="users" && session[:user]

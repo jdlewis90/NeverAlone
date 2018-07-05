@@ -21,8 +21,8 @@
 <% @Posts.each do | p | %>
 
 <div class="post">
-<h2><a href="/postview/<%= @username %>/<%= p.id %>""><%= p.title %></a></h2><br />
-<p><%= p.content %></p>
+<h3><a href="/postview/<%= @username %>/<%= p.id %>""><%= p.title %></a></h3><br />
+<p><%= simple_format(p.content) %></p>
 </div>
 
 <% end %>
